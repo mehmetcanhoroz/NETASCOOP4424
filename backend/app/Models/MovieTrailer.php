@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trailer extends Model
+class MovieTrailer extends Model
 {
     //
 }

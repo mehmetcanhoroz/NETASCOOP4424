@@ -15,7 +15,7 @@ class CreateMovieImagesTable extends Migration
     {
         Schema::create('movie_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('movie_id');
+            $table->bigInteger('movie_id');
             $table->text('image');
             $table->timestamps();
         });

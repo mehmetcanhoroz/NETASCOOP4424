@@ -3,7 +3,7 @@ import api from '../../Utils/Api';
 export const allMovies = () =>
   new Promise((resolve, reject) => {
     api
-      .put(`/movies`)
+      .get(`/movies`)
       .then(res => {
         if (res.error) {
           reject(res);

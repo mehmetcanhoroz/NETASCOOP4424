@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Model\MovieTrailer;
 use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
@@ -15,5 +14,13 @@ class Movie extends Model
     public function trailers()
     {
         return $this->hasMany(MovieTrailer::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function likeDislikes()
+    {
+        return $this->hasMany(LikeDislike::class);
     }
 }

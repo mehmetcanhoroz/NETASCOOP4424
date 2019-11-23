@@ -5,10 +5,14 @@ class Content extends Component {
   render() {
     return (
       <Fragment>
-        <p>Content burada</p>
-        {this.props.children}
+        <main role="main">
+          <div className="container" style={{paddingTop: '5em'}} >
+            {this.props.children}
+            <hr />
+          </div>
+        </main>
       </Fragment>
-        
+
     );
   }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import appConfig from '../constants/Env';
+import appConfig from '../Constants/Env';
 
 const api = axios.create({
     baseURL: appConfig.serverCredentials.port

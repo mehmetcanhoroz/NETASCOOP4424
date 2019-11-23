@@ -1,7 +1,7 @@
 const appConfig = {
   env: 'development',
   serverCredentials: {
-    host: 'http://127.0.0.1',
+    host: 'http://localhost',
     port: 8000,
   }
 };

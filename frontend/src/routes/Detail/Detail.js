@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { getMovie, makeComment } from '../../Services/Api/Movie';
+import ProgressBar from 'react-bootstrap/ProgressBar'
+
 class Detail extends Component {
     constructor(props) {
         super(props);
@@ -7,6 +9,7 @@ class Detail extends Component {
         console.log('detay', props.match.params.id); this.state = {
             movie: [],
             movieId: this.props.match.params.id,
+            like_dislikes: [],
             loaded: false
         }
         this.handleMakeComment = this.handleMakeComment.bind(this);
@@ -16,14 +19,31 @@ class Detail extends Component {
     }
     componentDidUpdate() {
         console.log('detay didmount', this.state.movie);
+
+        /*this.setState({
+            like_dislikes: {likes:totalLikes,dislikes:totalDislikes},
+        });*/
+
     }
     getMovie = () => {
         //this.props.dispatch(loading());
         getMovie({ id: this.props.match.params.id })
             .then(res => {
                 console.log('Detail Response geldi', res);
+
+                let totalLikes = 0;
+                let totalDislikes = 0;
+
+                res.data.like_dislikes.map(element => {
+                    if (element.liked)
+                        totalLikes++;
+                    else
+                        totalDislikes++;
+                });
+
                 this.setState({
                     movie: res.data,
+                    like_dislikes: { likes: totalLikes, dislikes: totalDislikes, total: totalDislikes + totalLikes },
                     loaded: true
                 });
                 /*this.props.dispatch(success());
@@ -59,8 +79,8 @@ class Detail extends Component {
                     loaded: true
                 });
 
-                this.refs.email.value = "";
-                this.refs.full_name.value = "";
+                /*this.refs.email.value = "";
+                this.refs.full_name.value = "";*/
                 this.refs.comment.value = "";
                 /*this.props.dispatch(success());
                 ;*/
@@ -85,6 +105,12 @@ class Detail extends Component {
                             <p>Posted on {this.state.movie.created_at}</p>
                             <hr />
                             <p>{this.state.movie.description}</p>
+                            <hr />
+                            <p><span>Like: {this.state.like_dislikes.likes}</span><span style={{ float: 'right' }}>Dislike: {this.state.like_dislikes.dislikes}</span></p>
+                            <ProgressBar>
+                                <ProgressBar variant="success" now={this.state.like_dislikes.likes * 100 / this.state.like_dislikes.total} key={1} />
+                                <ProgressBar variant="danger" now={this.state.like_dislikes.dislikes * 100 / this.state.like_dislikes.total} key={2} />
+                            </ProgressBar>
                             <hr />
                             <div className="card my-4">
                                 <h5 className="card-header">Leave a Comment:</h5>

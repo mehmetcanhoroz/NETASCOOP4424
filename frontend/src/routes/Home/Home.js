@@ -3,7 +3,6 @@ import Item from '../../Components/Movie/Item';
 
 import { allMovies } from '../../Services/Api/Movie';
 
-
 class Home extends Component {
     constructor(props) {
         super(props);

@@ -36,6 +36,24 @@ class LikeDislikesTableSeeder extends Seeder
             'liked' => true
         ]);
         \App\Models\LikeDislike::create([
+            'id' => 1005,
+            'movie_id' => 1003,
+            'ip' => '127.0.0.2',
+            'liked' => false
+        ]);
+        \App\Models\LikeDislike::create([
+            'id' => 1006,
+            'movie_id' => 1003,
+            'ip' => '127.0.0.3',
+            'liked' => false
+        ]);
+        \App\Models\LikeDislike::create([
+            'id' => 1007,
+            'movie_id' => 1003,
+            'ip' => '127.0.0.4',
+            'liked' => true
+        ]);
+        \App\Models\LikeDislike::create([
             'id' => 1004,
             'movie_id' => 1004,
             'ip' => '127.0.0.1',

@@ -10,7 +10,7 @@ class MovieController extends Controller
     //
     public function index()
     {
-        return response(Movie::with(['images'])->get()->all(), 200);
+        return response(Movie::with(['images'])->orderByDesc('id')->get()->all(), 200);
     }
 
     public function show(Request $request)

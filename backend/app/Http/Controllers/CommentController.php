@@ -21,9 +21,11 @@ class CommentController extends Controller
 
         $comment->save();
 
-        $movie = Movie::with(['comments', 'trailers', 'likeDislikes', 'images'])->findOrFail($request->movie_id);
+        return redirect()->action('MovieController@show')->with(['id' => $request->movie_id]);
 
-        return response($movie, 200);
+        /*$movie = Movie::with(['comments', 'trailers', 'likeDislikes', 'images'])->findOrFail($request->movie_id);
+
+        return response($movie, 200);*/
 
     }
 }

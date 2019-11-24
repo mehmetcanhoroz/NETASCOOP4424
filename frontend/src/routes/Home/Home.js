@@ -19,10 +19,15 @@ class Home extends Component {
         //this.props.dispatch(loading());
         allMovies()
             .then(res => {
-                console.log('Resposne geldi', res);
+                localStorage.setItem('movies', JSON.stringify(res.data));
+                localStorage.setItem('randomMovie', res.data[0].id);
+                let movie = res.data[Math.floor(Math.random() * res.data.length)];
+                localStorage.setItem('randomMovie', movie.id);
+
                 this.setState({
                     movies: res.data,
-                })
+                });
+
                 /*this.props.dispatch(success());
                 ;*/
             })

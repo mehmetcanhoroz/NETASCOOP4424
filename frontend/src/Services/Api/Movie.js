@@ -42,5 +42,19 @@ export const makeComment = (reqData) =>
       .catch(error => reject(error));
   });
 
+export const likeMovie = (reqData) =>
+  new Promise((resolve, reject) => {
+    api
+      .post(`/movies/` + reqData.id + "/like", {...reqData})
+      .then(res => {
+        if (res.error) {
+          reject(res);
+        } else {
+          resolve(res);
+        }
+      })
+      .catch(error => reject(error));
+  });
+
 
 export default allMovies;

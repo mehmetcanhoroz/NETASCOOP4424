@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/movies', function () {
+    return view('movieadd');
+});
+
+Route::post('/movies', 'MovieController@store')->name('movieadd');

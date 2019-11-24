@@ -11,7 +11,7 @@ class Item extends Component {
         return (
             <div className="col-md-4">
                 <div className="card mb-4 box-shadow">
-                    <img alt="moviecover" className="card-img-top" src={this.props.movie.images[0].image} data-holder-rendered="true" />
+                    <img alt="moviecover" className="card-img-top" src={this.props.movie.images[0] && this.props.movie.images[0].image} data-holder-rendered="true" />
                     <div className="card-body">
                         <h5 className="card-text">{this.props.movie.title}</h5>
                         <p className="card-text">{this.props.movie.description.substring(0, 150)}...</p>

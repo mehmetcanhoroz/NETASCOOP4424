@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from 'react';
-import { getMovie, makeComment } from '../../Services/Api/Movie';
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import { getMovie, makeComment, likeMovie } from '../../Services/Api/Movie';
+import { ProgressBar, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 class Detail extends Component {
     constructor(props) {
@@ -15,6 +17,7 @@ class Detail extends Component {
         this.handleMakeComment = this.handleMakeComment.bind(this);
     }
     componentWillMount() {
+        console.log('detay willmount', this.state.movie);
         this.getMovie();
     }
     componentDidUpdate() {
@@ -82,8 +85,6 @@ class Detail extends Component {
                 /*this.refs.email.value = "";
                 this.refs.full_name.value = "";*/
                 this.refs.comment.value = "";
-                /*this.props.dispatch(success());
-                ;*/
             })
             .catch(err => {
                 /*const error = {
@@ -92,6 +93,35 @@ class Detail extends Component {
                     'We apologise but we have had an issue on our end. Please try again in a few moments.',
                 };*/
                 //this.props.dispatch(fail(error));
+            });
+    };
+    handleLikeDislike = (liked) => {
+        //this.props.dispatch(loading());
+
+        likeMovie(
+            {
+                id: this.props.match.params.id,
+                liked: liked,
+            })
+            .then(res => {
+                console.log('Begeni Sonrasi Response geldi', res);
+                let totalLikes = 0;
+                let totalDislikes = 0;
+
+                res.data.like_dislikes.map(element => {
+                    if (element.liked)
+                        totalLikes++;
+                    else
+                        totalDislikes++;
+                });
+
+                this.setState({
+                    movie: res.data,
+                    like_dislikes: { likes: totalLikes, dislikes: totalDislikes, total: totalDislikes + totalLikes },
+                    loaded: true
+                });
+            })
+            .catch(err => {
             });
     };
     render() {
@@ -111,6 +141,10 @@ class Detail extends Component {
                                 <ProgressBar variant="success" now={this.state.like_dislikes.likes * 100 / this.state.like_dislikes.total} key={1} />
                                 <ProgressBar variant="danger" now={this.state.like_dislikes.dislikes * 100 / this.state.like_dislikes.total} key={2} />
                             </ProgressBar>
+                            <div style={{ paddingTop: '10px' }}>
+                                <Button variant="success" onClick={() => this.handleLikeDislike(true)}> <FontAwesomeIcon icon={faThumbsUp} /> Do you like the movie?</Button>
+                                <Button style={{ float: 'right' }} variant="danger" onClick={() => this.handleLikeDislike(false)}> <FontAwesomeIcon icon={faThumbsDown} /> Don't you like the movie?</Button>
+                            </div>
                             <hr />
                             <div className="card my-4">
                                 <h5 className="card-header">Leave a Comment:</h5>
@@ -148,7 +182,7 @@ class Detail extends Component {
                         </div>
                         <div className="col-lg-4">
                             {this.state.movie.images.map((item, key) =>
-                                <img key={key} className="card-img-top" src={item.image} alt="Card image cap" />
+                                <img key={key} className="img-fluid mt-1 w-100" src={item.image} alt="Card image cap" />
                             )}
                             <hr />
                             {this.state.movie.trailers.map((item, key) =>

@@ -26,10 +26,17 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-api.interceptors.response.use((config) => {
+api.interceptors.response.use((response) => {
   withReactContent(Swal).closeModal();
 
-  return config;
+  if (response.data.message)
+    withReactContent(Swal).fire({
+      icon: 'info',
+      title: 'Hey!',
+      html: response.data.message,
+    });
+
+  return response;
 }, function (error) {
   withReactContent(Swal).fire({
     icon: 'error',

@@ -11,22 +11,30 @@ class LikeDislikeController extends Controller
     //
     public function store(Request $request)
     {
-        $movie = Movie::findOrFail($request->id);
+        $movie = Movie::findOrFail($request->movie_id);
         $reaction = LikeDislike::where(
             [
-                'ip' => $request->ip,
+                'ip' => $request->ip(),
                 'movie_id' => $request->movie_id
-            ])->get();
+            ])->first();
 
+        $exist = false;
         if (!$reaction) {
-            $reaction = new Movie();
+            $reaction = new LikeDislike;
+            $exist = false;
+        } else if ($request->liked == $reaction->liked) {
+            return response(['message'=>'You already reacted same as now you clicked!'], 200);
         }
 
-        $reaction->ip = $request->ip;
+        //$reaction = new LikeDislike();
+        //$reaction->ip = '127.0.0.55';
+        $reaction->ip = $request->ip();
         $reaction->movie_id = $request->movie_id;
         $reaction->liked = $request->liked;
 
         $reaction->save();
+
+        return redirect()->action('MovieController@show', ['id' => $request->movie_id]);
     }
 
 }

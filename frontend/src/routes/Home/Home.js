@@ -5,6 +5,13 @@ import { allMovies } from '../../Services/Api/Movie';
 
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            movies: []
+        }
+    }
     componentWillMount() {
         this.getMovies();
     }
@@ -14,10 +21,11 @@ class Home extends Component {
         allMovies()
             .then(res => {
                 console.log('Resposne geldi', res);
-                /*this.props.dispatch(success());
                 this.setState({
-                  invoices: res.data.data,
-                });*/
+                    movies: res.data,
+                })
+                /*this.props.dispatch(success());
+                ;*/
             })
             .catch(err => {
                 /*const error = {
@@ -32,7 +40,11 @@ class Home extends Component {
         return (
             <Fragment>
                 <h2>Home Page</h2>
-                <Item></Item>
+                <div className="row">
+                    {this.state.movies && this.state.movies.map((item, key) =>
+                        <Item movie={item} key={item.id} />
+                    )}
+                </div>
             </Fragment>
         )
     }

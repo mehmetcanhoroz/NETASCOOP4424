@@ -11,7 +11,7 @@ class LikeDislikeController extends Controller
     //
     public function store(Request $request)
     {
-        $movie = Movie::findOrGail($request->id);
+        $movie = Movie::findOrFail($request->id);
         $reaction = LikeDislike::where(
             [
                 'ip' => $request->ip,

@@ -14,5 +14,33 @@ export const allMovies = () =>
       .catch(error => reject(error));
   });
 
+export const getMovie = (reqData) =>
+  new Promise((resolve, reject) => {
+    api
+      .get(`/movies/` + reqData.id)
+      .then(res => {
+        if (res.error) {
+          reject(res);
+        } else {
+          resolve(res);
+        }
+      })
+      .catch(error => reject(error));
+  });
 
-  export default allMovies;
+export const makeComment = (reqData) =>
+  new Promise((resolve, reject) => {
+    api
+      .post(`/movies/` + reqData.id + "/comment", { ...reqData })
+      .then(res => {
+        if (res.error) {
+          reject(res);
+        } else {
+          resolve(res);
+        }
+      })
+      .catch(error => reject(error));
+  });
+
+
+export default allMovies;

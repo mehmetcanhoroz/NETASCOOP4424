@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'movies', 'as'=> 'movies.'], function (){
     Route::get('/{id}', 'MovieController@show')->name('show');
     Route::post('/{movie_id}/like', 'LikeDislikeController@store')->name('like');
+    Route::post('/{movie_id}/comment', 'CommentController@store')->name('comment');
     Route::get('/', 'MovieController@index')->name('index');
 });

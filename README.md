@@ -82,6 +82,9 @@ and you will be able to use the project now!
 1. `$ cd frontend`
 2. `$ yarn start` or `npm start`
 
+## Add Movie
+You can not add a movie in react page, you need to go to backend page which is [`http://localhost:8000/movies`](http://localhost:8000/movies) then you can add the movie with as many as you want images and trailers.
+
 ## 3rd Party Dependencies
 
 1. "sweetalert2": "^9.4.0" [https://github.com/sweetalert2/sweetalert2](https://github.com/sweetalert2/sweetalert2)

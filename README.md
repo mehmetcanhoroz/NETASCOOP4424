@@ -100,4 +100,4 @@ You can not add a movie in react page, you need to go to backend page which is [
 When you use the project with 3rd party dependencies, their(3rd) own licences and their stricts are applied.
 
 ## License
-MIT
+[MIT](https://github.com/mehmetcanhoroz/NETASCOOP4424/blob/master/LICENSE)

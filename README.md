@@ -98,3 +98,6 @@ You can not add a movie in react page, you need to go to backend page which is [
 9. "bootstrap": "^4.3.1" [https://getbootstrap.com/docs/4.0/about/license/](https://getbootstrap.com/docs/4.0/about/license/)
 
 When you use the project with 3rd party dependencies, their(3rd) own licences and their stricts are applied.
+
+## License
+MIT

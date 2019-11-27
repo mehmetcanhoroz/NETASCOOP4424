@@ -42,6 +42,7 @@ class Detail extends Component {
                         totalLikes++;
                     else
                         totalDislikes++;
+                        return '';
                 });
 
                 this.setState({
@@ -113,6 +114,7 @@ class Detail extends Component {
                         totalLikes++;
                     else
                         totalDislikes++;
+                    return '';
                 });
 
                 this.setState({
@@ -188,12 +190,12 @@ class Detail extends Component {
                             </ul>
                             <hr />
                             {this.state.movie.images.map((item, key) =>
-                                <img key={key} className="img-fluid mt-1 w-100" src={item.image} alt="Card image cap" />
+                                <img key={key} className="img-fluid mt-1 w-100" src={item.image} alt={'Movie Image - ' + key} />
                             )}
                             <hr />
                             {this.state.movie.trailers.map((item, key) =>
                                 <div key={key} className="embed-responsive embed-responsive-16by9">
-                                    <iframe className="embed-responsive-item" src={item.src} allowFullScreen></iframe>
+                                    <iframe className="embed-responsive-item" src={item.src} allowFullScreen title={"Movie Trailer - " + key}></iframe>
                                 </div>
                             )}
                             <hr />
@@ -295,7 +297,7 @@ class Detail extends Component {
             }
             return utftext;
         };
-        var x = Array();
+        var x = [];
         var k, AA, BB, CC, DD, a, b, c, d;
         var S11 = 7, S12 = 12, S13 = 17, S14 = 22;
         var S21 = 5, S22 = 9, S23 = 14, S24 = 20;

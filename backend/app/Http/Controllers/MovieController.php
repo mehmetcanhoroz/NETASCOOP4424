@@ -20,6 +20,11 @@ class MovieController extends Controller
     {
         $movie = Movie::with(['comments', 'trailers', 'likeDislikes', 'images'])->findOrFail($request->id);
 
+        if ($request->message)
+        {
+            $movie->message = $request->message;
+        }
+
         return response($movie, 200);
     }
 

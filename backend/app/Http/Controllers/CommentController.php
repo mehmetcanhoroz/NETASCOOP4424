@@ -21,7 +21,7 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->action('MovieController@show', ['id' => $request->movie_id]);
+        return redirect()->action('MovieController@show', ['id' => $request->movie_id, 'message' => 'Your comment was added successfully!']);
 
         /*$movie = Movie::with(['comments', 'trailers', 'likeDislikes', 'images'])->findOrFail($request->movie_id);
 

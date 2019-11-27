@@ -113,8 +113,8 @@
 
     <script>
         $(document).ready(function () {
-            var max_fields = 10;
-            var max_fields_trailers = 10;
+            var max_fields = 99;
+            var max_fields_trailers = 99;
             var wrapper = $(".containerImages");
             var wrapper_trailer = $(".containerTrailers");
             var add_button = $(".add_form_field");

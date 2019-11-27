@@ -181,6 +181,12 @@ class Detail extends Component {
                             )}
                         </div>
                         <div className="col-lg-4">
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>My Score:</b> {this.state.movie.my_score}/10</li>
+                                <li class="list-group-item"><b>IMDb Score:</b> {this.state.movie.imdb_score}/10</li>
+                                <li class="list-group-item"><b>Meta Score:</b> {this.state.movie.meta_score}/10</li>
+                            </ul>
+                            <hr />
                             {this.state.movie.images.map((item, key) =>
                                 <img key={key} className="img-fluid mt-1 w-100" src={item.image} alt="Card image cap" />
                             )}

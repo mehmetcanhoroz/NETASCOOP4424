@@ -6,8 +6,8 @@ import { Header } from "./Components/Shared/Header";
 import { Content } from "./Components/Shared/Content";
 import { Footer } from "./Components/Shared/Footer";
 
-import Home from "./Routes/Home";
-import Detail from "./Routes/Detail";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
 
 function App() {
 

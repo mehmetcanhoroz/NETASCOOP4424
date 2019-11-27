@@ -94,4 +94,4 @@ and you will be able to use the project now!
 8. "axios": "^0.19.0" [https://github.com/axios/axios](https://github.com/axios/axios)
 9. "bootstrap": "^4.3.1" [https://getbootstrap.com/docs/4.0/about/license/](https://getbootstrap.com/docs/4.0/about/license/)
 
-When you use the project for 3rd party dependencies, their own licences are applied and their stricts.
+When you use the project with 3rd party dependencies, their(3rd) own licences and their stricts are applied.

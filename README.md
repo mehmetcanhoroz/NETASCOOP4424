@@ -8,12 +8,12 @@ The app has 2 project as backend and frontend. I used Laravel for backend and  R
 - Random Movie Selection
 
 ## Pre-requisites
-1. (Required) `Nodejs v10.16.3` (https://nodejs.org/dist/v10.16.3/node-v10.16.3-x64.msi)
+1. (Required) `Nodejs v10.16.3` (https://nodejs.org/dist/v10.16.3/)
 2. (Recommended) `Yarn` (https://yarnpkg.com/en/docs/install)
-3. (For local env, it is better) `XAMPP` (https://www.apachefriends.org/xampp-files/7.3.11/xampp-windows-x64-7.3.11-0-VC15-installer.exe)
+3. (For local env, it is better) `XAMPP` (https://www.apachefriends.org/download.html)
 4. If you dont install `XAMPP`, You have to install `PHP` on your machine. (`PHP` is required but if you install `XAMPP` it will automatically manage your `PHP` and its settings)
 5. If you dont install `XAMPP`, You have to install `MYSQL` on your machine. (`MYSQL` is required but if you install `XAMPP` it will automatically manage your `MSYQL` and its settings)
-6.  (Required) Composer (https://getcomposer.org/Composer-Setup.exe)
+6.  (Required) Composer (https://getcomposer.org/download/)
 
 ## Installation (Only first time!!!)
 Firstly, we need to clone the project.

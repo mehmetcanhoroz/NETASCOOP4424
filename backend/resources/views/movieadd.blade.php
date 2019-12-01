@@ -6,6 +6,7 @@
 
     <title>Add Movie</title>
     <meta name="description" content="Add Movie">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
     <style>
@@ -65,96 +66,102 @@
             'release_date' => \Carbon\Carbon::now()->toDateString()
         ]);
 -->
-<form action="/movies" method="post">
-    {{ csrf_field() }}
 
-    Movie Title:<br>
-    <input type="text" name="title">
-    <br>
-    Movie Description:<br>
-    <textarea name="description"></textarea>
-    <br>
-    PG:<br>
-    <input type="text" name="pg">
-    <br>
-    Duration:<br>
-    <input type="text" name="duration">
-    <br>
-    my_score:<br>
-    <input type="text" name="my_score">
-    <br>
-    imdb_score:<br>
-    <input type="text" name="imdb_score">
-    <br>
-    meta_score:<br>
-    <input type="text" name="meta_score">
-    <br>
-    release_date:<br>
-    <input type="text" name="release_date">
+<div class="container">
+    <div class="row">
+        <form action="/movies" method="post">
+            {{ csrf_field() }}
 
-    <hr>
+            Movie Title:<br>
+            <input class="form-control"  type="text" name="title">
+            <br>
+            Movie Description:<br>
+            <textarea class="form-control"  name="description"></textarea>
+            <br>
+            PG:<br>
+            <input class="form-control"  type="text" name="pg">
+            <br>
+            Duration:<br>
+            <input class="form-control"  type="text" name="duration">
+            <br>
+            my_score:<br>
+            <input class="form-control"  type="text" name="my_score">
+            <br>
+            imdb_score:<br>
+            <input class="form-control"  type="text" name="imdb_score">
+            <br>
+            meta_score:<br>
+            <input class="form-control"  type="text" name="meta_score">
+            <br>
+            release_date:<br>
+            <input class="form-control"  type="text" name="release_date" placeholder="31-12-2019">
+
+            <hr>
 
 
-    <div class="container1">
-        <button class="add_form_field">Add New Image &nbsp; <span style="font-size:16px; font-weight:bold;">+ </span>
-        </button>
-        <button class="add_form_field_trailer">Add New Trailer &nbsp; <span
-                style="font-size:16px; font-weight:bold;">+ </span>
-        </button>
-        <p>Images</p>
-        <div class="containerImages"><input type="text" name="images[]" required></div>
-        <p>Trailers</p>
-        <div class="containerTrailers"><input type="text" name="trailers[]" required></div>
+            <div class="container1">
+                <button class="add_form_field">Add New Image &nbsp; <span
+                        style="font-size:16px; font-weight:bold;">+ </span>
+                </button>
+                <button class="add_form_field_trailer">Add New Trailer &nbsp; <span
+                        style="font-size:16px; font-weight:bold;">+ </span>
+                </button>
+                <p>Images</p>
+                <div class="containerImages"><input type="text" name="images[]" required></div>
+                <p>Trailers</p>
+                <div class="containerTrailers"><input type="text" name="trailers[]" required></div>
+            </div>
+            <hr>
+
+            <br><br>
+            <input type="submit" value="Submit">
+
+            <script>
+                $(document).ready(function () {
+                    var max_fields = 99;
+                    var max_fields_trailers = 99;
+                    var wrapper = $(".containerImages");
+                    var wrapper_trailer = $(".containerTrailers");
+                    var add_button = $(".add_form_field");
+                    var add_button_trailer = $(".add_form_field_trailer");
+
+                    var x = 1;
+                    var x_trailers = 1;
+                    $(add_button).click(function (e) {
+                        e.preventDefault();
+                        if (x < max_fields) {
+                            x++;
+                            $(wrapper).append('<div><input type="text" name="images[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
+                        } else {
+                            alert('You Reached the limits')
+                        }
+                    });
+                    $(add_button_trailer).click(function (e) {
+                        e.preventDefault();
+                        if (x_trailers < max_fields_trailers) {
+                            x_trailers++;
+                            $(wrapper_trailer).append('<div><input type="text" name="trailers[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
+                        } else {
+                            alert('You Reached the limits')
+                        }
+                    });
+
+                    $(wrapper).on("click", ".delete", function (e) {
+                        e.preventDefault();
+                        $(this).parent('div').remove();
+                        x--;
+                    });
+
+                    $(wrapper_trailer).on("click", ".delete", function (e) {
+                        e.preventDefault();
+                        $(this).parent('div').remove();
+                        x_trailers--;
+                    })
+                });
+            </script>
+
+        </form>
     </div>
-    <hr>
-
-    <br><br>
-    <input type="submit" value="Submit">
-
-    <script>
-        $(document).ready(function () {
-            var max_fields = 99;
-            var max_fields_trailers = 99;
-            var wrapper = $(".containerImages");
-            var wrapper_trailer = $(".containerTrailers");
-            var add_button = $(".add_form_field");
-            var add_button_trailer = $(".add_form_field_trailer");
-
-            var x = 1;
-            var x_trailers = 1;
-            $(add_button).click(function (e) {
-                e.preventDefault();
-                if (x < max_fields) {
-                    x++;
-                    $(wrapper).append('<div><input type="text" name="images[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
-                } else {
-                    alert('You Reached the limits')
-                }
-            });
-            $(add_button_trailer).click(function (e) {
-                e.preventDefault();
-                if (x_trailers < max_fields_trailers) {
-                    x_trailers++;
-                    $(wrapper_trailer).append('<div><input type="text" name="trailers[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
-                } else {
-                    alert('You Reached the limits')
-                }
-            });
-
-            $(wrapper).on("click", ".delete", function (e) {
-                e.preventDefault();
-                $(this).parent('div').remove();
-                x--;
-            });
-
-            $(wrapper_trailer).on("click", ".delete", function (e) {
-                e.preventDefault();
-                $(this).parent('div').remove();
-                x_trailers--;
-            })
-        });
-    </script>
-
-</form>
+</div>
 </body>
 </html>

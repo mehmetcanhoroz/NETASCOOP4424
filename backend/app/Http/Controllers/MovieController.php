@@ -49,10 +49,10 @@ class MovieController extends Controller
             $image->save();
         }
 
-        foreach ($request->trailers as $trailer) {
-            $trailer = new MovieTrailer();
+        foreach ($request->trailers as $tra) {
+            $trailer = new MovieTrailer;
             $trailer->movie_id = $movie->id;
-            $trailer->src = $trailer;
+            $trailer->src = $tra;
             $trailer->save();
         }
 

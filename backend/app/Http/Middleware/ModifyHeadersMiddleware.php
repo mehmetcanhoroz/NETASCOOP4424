@@ -19,7 +19,7 @@ class ModifyHeadersMiddleware
         $response->header( 'Access-Control-Allow-Origin', '*' );
         $response->header( 'Access-Control-Allow-Headers', 'Origin, Content-Type' );
         $response->header( 'Access-Control-Allow-Methods', 'POST, PUT, GET, OPTIONS, DELETE' );
-        sleep(3);
+        sleep(0.5);
 
         return $response;
     }
